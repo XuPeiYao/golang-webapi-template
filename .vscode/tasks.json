@@ -1,0 +1,31 @@
+{
+    "tasks": [
+        {
+            "label": "wire",
+            "type": "shell",
+            "command": "./scripts/wire.sh",
+            "args": [], 
+            "presentation": {
+                "reveal": "silent",
+                "close": true
+            }
+        },
+        {
+            "label": "swag",
+            "type": "shell",
+            "command": "./scripts/update-swagger.sh",
+            "args": [],
+            "presentation": {
+                "reveal": "silent",
+                "close": true
+            }
+        },
+        {
+            "label":"build",
+            "dependsOn": [
+                "wire",
+                "swag"
+            ]
+        }
+    ]
+}

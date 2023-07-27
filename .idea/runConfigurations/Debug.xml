@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Debug" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="go-webapi-template" />
+    <working_directory value="$PROJECT_DIR$" />
+    <kind value="DIRECTORY" />
+    <package value="go-webapi-template" />
+    <directory value="$PROJECT_DIR$/cmd/api-server" />
+    <filePath value="$PROJECT_DIR$/cmd/api-server/main.go" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="wire" run_configuration_type="ShConfigurationType" />
+      <option name="RunConfigurationTask" enabled="false" run_configuration_name="swag" run_configuration_type="ShConfigurationType" />
+    </method>
+  </configuration>
+</component>

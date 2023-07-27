@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/cmd/api-server",
+            "preLaunchTask": "build",
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": ".+(https?:\/\/[^\\s]+).+",
+                "uriFormat": "%s/swagger/index.html"
+            }
+        },
+        {
+            "name": "Debug without update swagger",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/cmd/api-server",
+            "preLaunchTask": "wire",
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": ".+(https?:\/\/[^\\s]+).+",
+                "uriFormat": "%s/swagger/index.html"
+            }
+        }
+    ]
+}

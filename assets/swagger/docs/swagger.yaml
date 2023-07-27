@@ -1,0 +1,78 @@
+definitions:
+  models.HelloWorldApiResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  services.Product:
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+      price:
+        type: number
+      title:
+        type: string
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: 127.0.0.1:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample api-server celler api-server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /api/helloWorld:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.HelloWorldApiResponse'
+      summary: Get HelloWorld String
+      tags:
+      - HelloWorld
+  /api/helloWorld/error:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.HelloWorldApiResponse'
+      summary: Get Error
+      tags:
+      - HelloWorld
+  /api/products:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              items:
+                $ref: '#/definitions/services.Product'
+              type: array
+            type: array
+      summary: Get Product
+      tags:
+      - Products
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"
