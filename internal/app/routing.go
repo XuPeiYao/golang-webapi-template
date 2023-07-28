@@ -45,6 +45,12 @@ func ConfigureFiberRouting(
 		// api
 		fApp.ConfigureRoutes(helloworldController, productsController)
 
+		// Handle not found static file
+		app.Use(func(c *fiber.Ctx) error {
+			c.Next()
+			return nil
+		})
+
 		// swagger ui
 		app.Get("/swagger", func(ctx *fiber.Ctx) error {
 			return ctx.Redirect("/swagger/index.html")
