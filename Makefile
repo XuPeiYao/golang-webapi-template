@@ -2,16 +2,16 @@
 
 ci.build: init build
 
-init: setup restore
+init: setup restore ## make setup and restore
 
-setup: ## Setup required CLI tools
+setup: ## Setting up the development environment required for this project.
 	go install github.com/google/wire/cmd/wire@latest
 	go install github.com/swaggo/swag/cmd/swag@latest
 
-restore: ## Restore reqired packages
+restore: ## Download the necessary packages for this project.
 	go mod tidy
 
-vet: vet.api-server
+vet: vet.api-server ## Run go vet
 
 vet.api-server:
 	go vet ./cmd/api-server
