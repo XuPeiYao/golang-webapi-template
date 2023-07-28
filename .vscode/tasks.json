@@ -3,7 +3,7 @@
         {
             "label": "wire",
             "type": "shell",
-            "command": "./scripts/wire.sh",
+            "command": "./scripts/api-server.wire.sh",
             "args": [], 
             "presentation": {
                 "reveal": "silent",
@@ -13,7 +13,7 @@
         {
             "label": "swag",
             "type": "shell",
-            "command": "./scripts/update-swagger.sh",
+            "command": "./scripts/api-server.swag.sh",
             "args": [],
             "presentation": {
                 "reveal": "silent",
