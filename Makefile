@@ -1,6 +1,7 @@
 .DEFAULT_GOAL := ci.build
 
 ci.build: init build
+ci.build.docker: init build.docker
 ci.build.debug: init build.debug
 
 init: setup restore ## make setup and restore
@@ -19,7 +20,12 @@ vet.api-server:
 
 build:  build.api-server ## Build api-server
 
+build.docker: build.docker.api-server ## Build api-server with docker
+
 build.debug: build.api-server.debug ## Build api-server with debug mode
+
+build.docker.api-server:
+	docker build -t api-server:latest -f ./build/Dockerfile.api-server.release .
 
 build.api-server: 
 	/bin/bash ./scripts/api-server.wire.sh
@@ -35,7 +41,7 @@ help: ## Show help message.
 	@printf "Usage:\n"
 	@printf "  make <target>\n\n"
 	@printf "Targets:\n"
-	@perl -nle'print $& if m{^[a-zA-Z0-9_-]+:.*?## .*$$}' $(MAKEFILE_LIST) | \
+	@perl -nle'print $& if m{^[\.a-zA-Z0-9_-]+:.*?## .*$$}' $(MAKEFILE_LIST) | \
 		sort | \
 		awk 'BEGIN {FS = ":.*?## "}; \
 		{printf "  %-18s %s\n", $$1, $$2}'
