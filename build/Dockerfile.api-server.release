@@ -1,0 +1,22 @@
+ARG PORT=3000
+
+FROM alpine:3.17.0 AS base
+ENV PORT=$PORT
+EXPOSE $PORT
+WORKDIR /app
+
+
+FROM golang:alpine AS build
+#ENV GOPRIVATE=
+WORKDIR /app
+RUN apk add --no-cache bash
+RUN apk add --no-cache make
+COPY . .
+RUN make ci.build
+
+
+FROM base AS final
+WORKDIR /app
+COPY --from=build /app/dist/api-server .
+RUN chmod +x api-server
+ENTRYPOINT ["./api-server"]

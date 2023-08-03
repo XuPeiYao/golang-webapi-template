@@ -1,6 +1,7 @@
 .DEFAULT_GOAL := ci.build
 
 ci.build: init build
+ci.build.debug: init build.debug
 
 init: setup restore ## make setup and restore
 
@@ -18,10 +19,17 @@ vet.api-server:
 
 build:  build.api-server ## Build api-server
 
+build.debug: build.api-server.debug ## Build api-server with debug mode
+
 build.api-server: 
-	bash ./scripts/api-server.wire.sh
-	bash ./scripts/api-server.swag.sh
-	bash ./scripts/api-server.build.sh
+	/bin/bash ./scripts/api-server.wire.sh
+	/bin/bash ./scripts/api-server.swag.sh
+	/bin/bash ./scripts/api-server.release-build.sh
+
+build.api-server.debug:
+	/bin/bash ./scripts/api-server.wire.sh
+	/bin/bash ./scripts/api-server.swag.sh
+	/bin/bash ./scripts/api-server.debug-build.sh
 
 help: ## Show help message.
 	@printf "Usage:\n"

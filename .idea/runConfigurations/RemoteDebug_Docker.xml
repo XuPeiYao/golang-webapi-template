@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="RemoteDebug-Docker" type="GoRemoteDebugConfigurationType" factoryName="Go Remote" port="40000">
+    <option name="disconnectOption" value="ASK" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Debug-Docker" run_configuration_type="docker-deploy" />
+    </method>
+  </configuration>
+</component>

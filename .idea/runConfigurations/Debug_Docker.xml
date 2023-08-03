@@ -1,0 +1,35 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Debug-Docker" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+    <deployment type="dockerfile">
+      <settings>
+        <option name="imageTag" value="api-server:debug" />
+        <option name="buildArgs">
+          <list>
+            <DockerEnvVarImpl>
+              <option name="name" value="progress" />
+              <option name="value" value="plain" />
+            </DockerEnvVarImpl>
+          </list>
+        </option>
+        <option name="containerName" value="api-server-debug" />
+        <option name="contextFolderPath" value="." />
+        <option name="portBindings">
+          <list>
+            <DockerPortBindingImpl>
+              <option name="containerPort" value="8080" />
+              <option name="hostPort" value="8080" />
+            </DockerPortBindingImpl>
+            <DockerPortBindingImpl>
+              <option name="containerPort" value="40000" />
+              <option name="hostPort" value="40000" />
+            </DockerPortBindingImpl>
+          </list>
+        </option>
+        <option name="commandLineOptions" value="--rm --security-opt=&quot;apparmor=unconfined&quot; --cap-add=SYS_PTRACE" />
+        <option name="showCommandPreview" value="true" />
+        <option name="sourceFilePath" value="build/Dockerfile.api-server.debug" />
+      </settings>
+    </deployment>
+    <method v="2" />
+  </configuration>
+</component>
